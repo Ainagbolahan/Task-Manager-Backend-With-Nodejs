@@ -1,13 +1,14 @@
 {
-  "name": "jobs",
+  "name": "taskmanager",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend for pre-built task manager",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aina Gbolahan",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
@@ -16,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ainagbolahan/Task-Manager-Backend-With-Nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ainagbolahan/Task-Manager-Backend-With-Nodejs/issues"
+  },
+  "homepage": "https://github.com/Ainagbolahan/Task-Manager-Backend-With-Nodejs#readme"
 }
