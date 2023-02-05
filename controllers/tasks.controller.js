@@ -1,12 +1,14 @@
 const { Tasks } = require('../models/task.models')
+// const showTasks = require('../public/browser-app')
+
 
 const getAllTasks = async (req, res) => {
 	try {
-		const allTask = Tasks.find({})
+		const tasks =await Tasks.find({})
 
 		return res.status(200).json({
-			meassage: 'task fetched Sucessfully',
-			allTask,
+			message: 'task fetched Sucessfully',
+			tasks,
 		})
 	} catch (err) {
 		console.log(err)
@@ -34,7 +36,7 @@ const createTasks = async (req, res) => {
 const getTasks = async (req, res) => {
 	try {
 		const taskId = req.params.id
-		const getSingleTask = Tasks.findOne({ _id: taskId })
+		const getSingleTask =await Tasks.findOne({ _id: taskId })
 
 		if (!getSingleTask) {
 			return res.status(401).json({
@@ -55,9 +57,12 @@ const getTasks = async (req, res) => {
 }
 
 const updateTasks = async (req, res) => {
-	try {
+    try {
+        
+
+
 		const taskId = req.params.id
-		const { body: taskBody } = req.body
+		const { body: taskBody } = req
 		// const update ={body:taskBody.name}
 		const updateSingleTask = await Tasks.findOneAndUpdate({ _id: taskId }, taskBody, {
 			new: true,
@@ -71,13 +76,13 @@ const updateTasks = async (req, res) => {
 		}
 
 		return res.status(200).json({
-			meassage: 'task Deleted Sucessfully',
+			meassage: 'task updated Sucessfully',
 			updateSingleTask,
 		})
 	} catch (err) {
 		console.log(err)
 		return res.status(500).json({
-			message: 'Unable to create task',
+			message: 'Internal Server issues',
 		})
 	}
 }
@@ -85,7 +90,7 @@ const updateTasks = async (req, res) => {
 const deleteTasks = async (req, res) => {
 	try {
 		const taskId = req.params.id
-		const deleteSingleTask = Tasks.findOneAndDelete({ _id: taskId })
+		const deleteSingleTask =await Tasks.findOneAndDelete({ _id: taskId })
 
 		if (!deleteSingleTask) {
 			return res.status(401).json({
@@ -112,3 +117,5 @@ module.exports = {
 	updateTasks,
 	deleteTasks,
 }
+
+
